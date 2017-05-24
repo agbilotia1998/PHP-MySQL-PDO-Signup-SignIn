@@ -18,13 +18,10 @@ try {
 
     $nRows = $conn->query("select count(*) from users WHERE username='$username'")->fetchColumn();
     //echo $nRows;
-    if ($nRows == 0)
-    {
+    if ($nRows == 0) {
         $nRows = $conn->query("select count(*) from users WHERE email='$email'")->fetchColumn();
-        if ($nRows == 0)
-        {
-            if($password==$confirm)
-            {
+        if ($nRows == 0) {
+            if ($password == $confirm) {
                 $sql = "INSERT INTO Users (name, password, email,username)
                 VALUES ('$name',' $password','$email','$username')";
                 // use exec() because no results are returned
@@ -32,29 +29,17 @@ try {
                 $conn = null;
 
                 echo '<h1>Thankyou ', $name, ' For Registering</h1>', '<br>';
-            }
-
-            else
-            {
+            } else {
                 echo "Confirm password field didnot match.";
             }
-        }
-
-        else
-        {
+        } else {
             echo "Email already exists";
         }
+    } else {
+        echo "Username already exists";
     }
-
-    else
-        {
-            echo "Username already exists";
-        }
+} catch (PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
 }
-
-    catch (PDOException $e)
-    {
-        echo $sql . "<br>" . $e->getMessage();
-    }
 
 

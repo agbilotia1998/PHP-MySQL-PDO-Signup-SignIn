@@ -21,10 +21,7 @@ try {
     } else {
         echo 'Error Logging In !';
     }
-}
-
-catch(PDOException $e)
-{
+} catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
 
