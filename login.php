@@ -17,7 +17,7 @@ try {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($row['username'] == $username && $row['password'] == $password) {
-        echo '<h1>', $row['name'], 'You have logged in Successfully </h1>', '<br>';
+        echo  $row['name'], ' You have logged in Successfully.';
     } else {
         echo 'Error Logging In !';
     }

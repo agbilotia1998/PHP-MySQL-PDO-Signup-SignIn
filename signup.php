@@ -28,7 +28,7 @@ try {
                 $conn->exec($sql);
                 $conn = null;
 
-                echo '<h1>Thankyou ', $name, ' For Registering</h1>', '<br>';
+                echo 'Thankyou ', $name, ' For Registering.';
             } else {
                 echo "Confirm password field didnot match.";
             }
